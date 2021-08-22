@@ -1,0 +1,24 @@
+{
+  "name": "trabalho1",
+  "version": "1.0.0",
+  "description": "trabalho 1 da disciplina Algebra Linear Computacional 2021.1",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Gustavo Vieira",
+  "license": "MIT",
+  "bin": "main.js",
+  "pkg": {
+    "assets": [
+      "view/\\*\\*/\\*"
+    ],
+    "target": [
+      "node12"
+    ]
+  },
+  "dependencies": {
+    "console-read-write": "^0.1.1",
+    "ml-matrix": "^6.8.0"
+  }
+}
