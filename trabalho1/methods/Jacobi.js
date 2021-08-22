@@ -21,11 +21,13 @@ function Jacobi({ n, matrixA, vectorB, shouldCalculateDeterminant, tol }) {
   let possibleSolution = createEmptyMatrix(n,1);
   let i = 0;
   let residue;
+  const residues = [];
   while (i < 10000) {
     i += 1;
     const newPossibleSolution = calculateNewPossibleSolution(matrixA, possibleSolution, vectorB);
 
     residue = getResidue(newPossibleSolution, possibleSolution);
+    residues.push(Number.isNaN(residue) ? Infinity : residue);
 
     if (residue > tol) {
       possibleSolution = newPossibleSolution;
@@ -38,6 +40,7 @@ function Jacobi({ n, matrixA, vectorB, shouldCalculateDeterminant, tol }) {
         iterations: i,
         determinant,
         residue: Number.isNaN(residue) ? Infinity : residue,
+        residues,
       };
     }
   }
@@ -49,6 +52,8 @@ function Jacobi({ n, matrixA, vectorB, shouldCalculateDeterminant, tol }) {
     iterations: i,
     determinant,
     residue: Number.isNaN(residue) ? Infinity : residue,
+    residues,
+    errors: ['possibilidade de não convergência']
   };
 }
 

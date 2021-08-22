@@ -25,11 +25,15 @@ function calculateNewPossibleSolution(matrixA, vectorX, vectorB) {
 function GaussSeidel({ n, matrixA, vectorB, shouldCalculateDeterminant, tol }) {
   let possibleSolution = createEmptyMatrix(n,1);
   let i = 0;
-  while (true) {
+  let residue;
+  const residues = [];
+
+  while (i < 10000) {
     i += 1;
     const newPossibleSolution = calculateNewPossibleSolution(matrixA, possibleSolution, vectorB);
 
-    const residue = getResidue(newPossibleSolution, possibleSolution);
+    residue = getResidue(newPossibleSolution, possibleSolution);
+    residues.push(Number.isNaN(residue) ? Infinity : residue);
 
     if (residue > tol) {
       possibleSolution = newPossibleSolution;
@@ -40,10 +44,22 @@ function GaussSeidel({ n, matrixA, vectorB, shouldCalculateDeterminant, tol }) {
         vectorX: newPossibleSolution,
         iterations: i,
         determinant,
-        residue,
+        residue: Number.isNaN(residue) ? Infinity : residue,
+        residues,
       };
     }
   }
+
+  const { determinant } = shouldCalculateDeterminant ? LUDecomposition(n, matrixA, shouldCalculateDeterminant) : undefined;
+
+  return {
+    vectorX: possibleSolution,
+    iterations: i,
+    determinant,
+    residue: Number.isNaN(residue) ? Infinity : residue,
+    residues,
+    errors: ['possibilidade de não convergência']
+  };
 }
 
 module.exports = GaussSeidel;

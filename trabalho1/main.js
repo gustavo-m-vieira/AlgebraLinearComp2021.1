@@ -6,13 +6,14 @@ const CholeskyDecomposition = require('./methods/CholeskyDecomposition');
 const LUDecomposition = require('./methods/LUDecomposition');
 const Jacobi = require('./methods/Jacobi');
 const GaussSeidel = require('./methods/GaussSeidel');
+const createOutputFile = require('./utils/createOutputFile');
 
 util.inspect.defaultOptions.depth = null;
 
 async function main() {
   console.log('Digite o nome do arquivo:(ele deve estar na mesma pasta do executavel)');
-  // const fileName = await io.read();
-  const fileName = 'matrixGS.txt';
+  const fileName = await io.read();
+  // const fileName = 'matrixGS.txt';
 
   let buffer;
   try {
@@ -60,18 +61,26 @@ async function main() {
 
   console.log({ params });
 
+  let answer;
+
   switch(ICOD) {
     case 1:
-      return LUDecomposition(params);
+      answer = LUDecomposition(params);
+      break;
     case 2:
-      return CholeskyDecomposition(params);
+      answer = CholeskyDecomposition(params);
+      break;
     case 3:
-      return Jacobi(params);
+      answer = Jacobi(params);
+      break;
     case 4:
-      return GaussSeidel(params);
+      answer = GaussSeidel(params);
+      break;
     default:
       break;
   }
+
+  createOutputFile(answer, ICOD);
 }
 
 main().then(response => console.log(response));
