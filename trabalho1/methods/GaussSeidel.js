@@ -7,11 +7,15 @@ function calculateNewPossibleSolution(matrixA, vectorX, vectorB) {
 
   for (let i = 0; i < vectorX.length; i++) {
     let sum1 = 0;
-    for (let j = 0; j < i; j++) sum1 += matrixA[i][j]*newVectorX[j][0];
+    for (let j = 0; j < i; j++) {
+      sum1 += matrixA[i][j]*newVectorX[j][0];
+    }
 
     let sum2 = 0;
-    for (let k = i + 1; k < matrixA.length; k++) sum2 += matrixA[i][k]**vectorX[k][0];
-    console.log({ i, sum1, sum2 });
+    for (let k = i + 1; k < matrixA.length; k++) {
+      sum2 += matrixA[i][k]*vectorX[k][0];
+    }
+
     newVectorX[i][0] = (vectorB[i][0] - sum1 - sum2)/matrixA[i][i];
   }
 

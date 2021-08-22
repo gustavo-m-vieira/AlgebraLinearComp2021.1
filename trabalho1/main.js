@@ -12,7 +12,7 @@ util.inspect.defaultOptions.depth = null;
 async function main() {
   console.log('Digite o nome do arquivo:(ele deve estar na mesma pasta do executavel)');
   // const fileName = await io.read();
-  const fileName = 'matrixJacobi.txt';
+  const fileName = 'matrixGS.txt';
 
   let buffer;
   try {
