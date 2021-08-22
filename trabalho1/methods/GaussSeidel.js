@@ -6,18 +6,19 @@ function calculateNewPossibleSolution(matrixA, vectorX, vectorB) {
   const newVectorX = createEmptyMatrix(vectorX.length, 1);
 
   for (let i = 0; i < vectorX.length; i++) {
-    let sum = 0;
-    for (let j = 0; j < vectorX.length; j++) {
-      if (i !== j) sum += matrixA[i][j]*vectorX[j][0];
-    }
+    let sum1 = 0;
+    for (let j = 0; j < i; j++) sum1 += matrixA[i][j]*newVectorX[j][0];
 
-    newVectorX[i][0] = (vectorB[i][0] - sum)/matrixA[i][i];
+    let sum2 = 0;
+    for (let k = i + 1; k < matrixA.length; k++) sum2 += matrixA[i][k]**vectorX[k][0];
+    
+    newVectorX[i][0] = (vectorB[i][0] - sum1 - sum2)/matrixA[i][i];
   }
 
   return newVectorX;
 }
 
-function Jacobi({ n, matrixA, vectorB, shouldCalculateDeterminant, tol }) {
+function GaussSeidel({ n, matrixA, vectorB, shouldCalculateDeterminant, tol }) {
   let possibleSolution = createEmptyMatrix(n,1);
   let i = 0;
   while (true) {
@@ -41,4 +42,4 @@ function Jacobi({ n, matrixA, vectorB, shouldCalculateDeterminant, tol }) {
   }
 }
 
-module.exports = Jacobi;
+module.exports = GaussSeidel;
