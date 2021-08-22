@@ -11,7 +11,7 @@ function calculateNewPossibleSolution(matrixA, vectorX, vectorB) {
 
     let sum2 = 0;
     for (let k = i + 1; k < matrixA.length; k++) sum2 += matrixA[i][k]**vectorX[k][0];
-    
+    console.log({ i, sum1, sum2 });
     newVectorX[i][0] = (vectorB[i][0] - sum1 - sum2)/matrixA[i][i];
   }
 
@@ -27,11 +27,11 @@ function GaussSeidel({ n, matrixA, vectorB, shouldCalculateDeterminant, tol }) {
 
     const residue = getResidue(newPossibleSolution, possibleSolution);
 
-    const { determinant } = shouldCalculateDeterminant ? LUDecomposition(n, matrixA, shouldCalculateDeterminant) : undefined;
-
     if (residue > tol) {
       possibleSolution = newPossibleSolution;
     } else {
+      const { determinant } = shouldCalculateDeterminant ? LUDecomposition(n, matrixA, shouldCalculateDeterminant) : undefined;
+
       return {
         vectorX: newPossibleSolution,
         iterations: i,

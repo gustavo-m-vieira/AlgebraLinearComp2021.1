@@ -20,25 +20,36 @@ function calculateNewPossibleSolution(matrixA, vectorX, vectorB) {
 function Jacobi({ n, matrixA, vectorB, shouldCalculateDeterminant, tol }) {
   let possibleSolution = createEmptyMatrix(n,1);
   let i = 0;
-  while (true) {
+  let residue;
+  while (i < 10000) {
     i += 1;
     const newPossibleSolution = calculateNewPossibleSolution(matrixA, possibleSolution, vectorB);
 
-    const residue = getResidue(newPossibleSolution, possibleSolution);
-
-    const { determinant } = shouldCalculateDeterminant ? LUDecomposition(n, matrixA, shouldCalculateDeterminant) : undefined;
+    residue = getResidue(newPossibleSolution, possibleSolution);
 
     if (residue > tol) {
       possibleSolution = newPossibleSolution;
     } else {
+
+      const { determinant } = shouldCalculateDeterminant ? LUDecomposition(n, matrixA, shouldCalculateDeterminant) : undefined;
+
       return {
         vectorX: newPossibleSolution,
         iterations: i,
         determinant,
-        residue,
+        residue: Number.isNaN(residue) ? Infinity : residue,
       };
     }
   }
+
+  const { determinant } = shouldCalculateDeterminant ? LUDecomposition(n, matrixA, shouldCalculateDeterminant) : undefined;
+
+  return {
+    vectorX: possibleSolution,
+    iterations: i,
+    determinant,
+    residue: Number.isNaN(residue) ? Infinity : residue,
+  };
 }
 
 module.exports = Jacobi;
