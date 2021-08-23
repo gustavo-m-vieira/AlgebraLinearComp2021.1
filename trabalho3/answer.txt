@@ -1,0 +1,2 @@
+Resolvido pelo método Interpolação
+y: 1.6408
