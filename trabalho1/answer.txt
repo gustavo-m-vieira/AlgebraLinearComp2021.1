@@ -1,3 +1,4 @@
+Resolvido pelo método Decomposição LU
 Solução X:
-28.583333333333332 -7.666666666666666 1.3333333333333333
-Determinante: 36.00000000000008
+2 1 1
+Determinante: 536

@@ -62,25 +62,30 @@ async function main() {
   console.log({ params });
 
   let answer;
+  let method;
 
   switch(ICOD) {
     case 1:
       answer = LUDecomposition(params);
+      method = 'Decomposição LU';
       break;
     case 2:
       answer = CholeskyDecomposition(params);
+      method = 'Decomposição Cholesky';
       break;
     case 3:
       answer = Jacobi(params);
+      method = 'Procedimento Jacobi';
       break;
     case 4:
       answer = GaussSeidel(params);
+      method = 'Procedimento GaussSeidel';
       break;
     default:
       break;
   }
 
-  createOutputFile(answer, ICOD);
+  createOutputFile(answer, ICOD, method);
 }
 
 main().then(response => console.log(response));

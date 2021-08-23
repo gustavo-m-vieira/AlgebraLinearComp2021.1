@@ -56,6 +56,8 @@
 > Não existe empty lines
 
 ```jsonc
+// Diz qual método utilizou
+Resolvido pelo método Decomposição LU
 Solução X:
 1 3 5
 // Se houver Erros

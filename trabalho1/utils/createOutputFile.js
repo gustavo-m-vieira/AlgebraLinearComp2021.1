@@ -1,7 +1,7 @@
 const fs = require('fs');
 
-function createOutputFile(answer, ICOD) {
-  let fileString = '';
+function createOutputFile(answer, ICOD, method) {
+  let fileString = `Resolvido pelo método ${method}\n`;
   
   switch (ICOD) {
     case 1:
