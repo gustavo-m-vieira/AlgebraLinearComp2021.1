@@ -17,6 +17,8 @@ function createOutputFile(answer, method) {
     });
   }
 
+  fileString += 'Ressalta-se que existe um erro associado a esses valores, pois são aproximações.\n';
+
   console.log({ file: fileString });
   fs.writeFileSync('answer.txt', fileString);
 }

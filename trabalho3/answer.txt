@@ -1,2 +1,3 @@
 Resolvido pelo método Interpolação
-y: 1.6408
+y: 0.56
+Ressalta-se que existe um erro associado a esses valores, pois são aproximações.
