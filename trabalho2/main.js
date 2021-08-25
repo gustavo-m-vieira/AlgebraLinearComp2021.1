@@ -2,10 +2,8 @@ const { Matrix, inverse } = require('ml-matrix');
 const io = require('console-read-write');
 const fs = require('fs');
 const util = require('util');
-const CholeskyDecomposition = require('./methods/CholeskyDecomposition');
-const LUDecomposition = require('./methods/LUDecomposition');
 const Jacobi = require('./methods/Jacobi');
-const GaussSeidel = require('./methods/GaussSeidel');
+const Potency = require('./methods/Potency');
 const createOutputFile = require('./utils/createOutputFile');
 
 util.inspect.defaultOptions.depth = null;
@@ -66,20 +64,12 @@ async function main() {
 
   switch(ICOD) {
     case 1:
-      answer = LUDecomposition(params);
-      method = 'Decomposição LU';
+      answer = Potency(params);
+      method = 'Potência';
       break;
     case 2:
-      answer = CholeskyDecomposition(params);
-      method = 'Decomposição Cholesky';
-      break;
-    case 3:
       answer = Jacobi(params);
-      method = 'Procedimento Jacobi';
-      break;
-    case 4:
-      answer = GaussSeidel(params);
-      method = 'Procedimento GaussSeidel';
+      method = 'Jacobi';
       break;
     default:
       break;
