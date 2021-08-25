@@ -10,8 +10,8 @@ util.inspect.defaultOptions.depth = null;
 
 async function main() {
   console.log('Digite o nome do arquivo:(ele deve estar na mesma pasta do executavel)');
-  // const fileName = await io.read();
-  const fileName = 'example.txt';
+  const fileName = await io.read();
+  // const fileName = 'example.txt';
 
   let buffer;
   try {
