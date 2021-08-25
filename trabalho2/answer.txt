@@ -1,0 +1,24 @@
+Resolvido pelo método Potência
+AutoVetores:
+1 1 1
+1 1 1
+1 1 1
+1 1 1
+1 1 1
+1 1 1
+1 1 1
+1 1 1
+1 1 1
+1 1 1
+AutoValores:
+-3
+-6
+-9
+-12
+-15
+-18
+-21
+-24
+-27
+-30
+Iterações: 10

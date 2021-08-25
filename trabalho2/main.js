@@ -10,8 +10,8 @@ util.inspect.defaultOptions.depth = null;
 
 async function main() {
   console.log('Digite o nome do arquivo:(ele deve estar na mesma pasta do executavel)');
-  const fileName = await io.read();
-  // const fileName = 'matrixGS.txt';
+  // const fileName = await io.read();
+  const fileName = 'example.txt';
 
   let buffer;
   try {
@@ -35,11 +35,9 @@ async function main() {
   n = parseInt(n);
 
   const matrix_elements = rest.slice(0, n);
-  const vector_elements = rest[n];
-  const TOLm = rest[n + 1] || -1;
+  const TOLm = rest[n] || -1;
 
   const matrixA = matrix_elements.map((line) => line.split(' ').map((a) => parseFloat(a)));
-  const vectorB = vector_elements.split(' ').map((a) => [parseFloat(a)]);
 
   try {
     const matrix = new Matrix(matrixA);
@@ -52,7 +50,6 @@ async function main() {
   const params = {
     n,
     matrixA,
-    vectorB,
     shouldCalculateDeterminant,
     tol: Math.pow(10, TOLm),
   };
