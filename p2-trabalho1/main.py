@@ -1,7 +1,6 @@
 import os
 from newton import newton_method
 from broyden import broyden_method
-import sys
 import math
 
 def main():
